@@ -3,7 +3,7 @@ from urllib.request import urlopen
 import base64
 
 url = "http://www.vpngate.net/api/iphone/"
-country="KR"
+country = "KR"
 num_server_top = 15
 
 with urlopen(url) as file:
@@ -13,8 +13,6 @@ with urlopen(url) as file:
 	
 	for server in content[2:-1]:
 		df.loc[len(df)] = server.decode()[:-4].split(",")
-
-# 	print(df.columns)
 
 	df2 = df.loc[df.CountryShort == country]
 	df2.Speed = df2.Speed.astype(float)
